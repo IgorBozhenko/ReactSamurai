@@ -1,40 +1,30 @@
 import React from 'react';
-import './App.css';
-import Header from './components/Header';
-import {Navbar} from './components/Navbar';
+import './App.css'
+import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
+import Profile from './components/Navbar/Profile/Profile'; 
+import Dialogs from './components/Navbar/Dialogs/Dialogs';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import News from './components/Navbar/News/News';
+import Music from './components/Navbar/Music/Music';
+import Settings from './components/Navbar/Settings/Settings';
 
-
-const App = () => {
-  return (
-    <div className='app-wrapper'>
-
+const App = (props) => {
+  return (<BrowserRouter>
+    <div className="app-wrapper">
       <Header />
-
       <Navbar />
-
-      <div className='content'>
-        <div>
-          <img src='https://avatars.mds.yandex.net/i?id=9dde1f515fdf589cc9f15d6ff368969529c63826-12503309-images-thumbs&n=13'></img>
-        </div>
-        <div>
-          ava + description
-        </div>
-        <div>
-          My posts
-          <div>
-            New post
-          </div>
-          <div>
-            <div>
-              post 1
-            </div>
-            <div>
-              post 2
-            </div>
-          </div>
-        </div>
+      <div className="app-wrapper-content">
+        <Routes>
+        <Route path='/profile' render={() => <Profile posts={props.posts}/>} />
+        <Route path='/dialogs' Component={Dialogs} />
+        <Route path='/news' Component={News} />
+        <Route path='/music' render={() => <Music />} />
+        <Route path='/settings' render={() => <Settings />} />
+        </Routes>
       </div>
-    </div>);
+    </div>
+  </BrowserRouter>);
 }
 
 

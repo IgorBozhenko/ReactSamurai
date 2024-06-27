@@ -1,0 +1,12 @@
+.nav {
+    grid-area: n;
+    background-color: burlywood;
+    text-decoration: none;
+  }
+  
+  
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
